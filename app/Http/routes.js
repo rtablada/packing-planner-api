@@ -17,10 +17,16 @@
 
 const Route = use('Route');
 
-Route.post('/api/users', 'UserController.store');
+Route.resource('/api/trips', 'TripController')
+  .except(['create', 'edit']);
 
-Route.resource('/api/users', 'UserController')
-  .only(['index', 'show', 'update', 'destroy'])
-  .middleware('auth');
+Route.resource('/api/items', 'TripController')
+  .except(['create', 'edit']);
 
-Route.post('/api/token-auth', 'SessionController.store');
+// Route.post('/api/users', 'UserController.store');
+//
+// Route.resource('/api/users', 'UserController')
+//   .only(['index', 'show', 'update', 'destroy'])
+//   .middleware('auth');
+//
+// Route.post('/api/token-auth', 'SessionController.store');
