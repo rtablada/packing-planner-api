@@ -1,6 +1,7 @@
 'use strict';
 
 const Trip = use('App/Model/Trip');
+const Database = use('Database');
 const attributes = ['order', 'title', 'complete-date', 'help'];
 
 class TripController {
@@ -12,10 +13,11 @@ class TripController {
   }
 
   * store(request, response) {
+    const { count } = yield Database.table('trips').count('id as count').first();
+
     const input = request.jsonApi.getAttributesSnakeCase(attributes);
-    const foreignKeys = {
-    };
-    const trip = yield Trip.create(Object.assign({}, input, foreignKeys));
+    const trip = yield Trip.create(Object.assign({}, input, { order: count }));
+
 
     response.jsonApi('Trip', trip);
   }
