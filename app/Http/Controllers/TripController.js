@@ -7,7 +7,7 @@ const attributes = ['order', 'title', 'complete-date', 'help'];
 class TripController {
 
   * index(request, response) {
-    const trips = yield Trip.with('items').fetch();
+    const trips = yield Trip.with('items.room').fetch();
 
     response.jsonApi('Trip', trips);
   }

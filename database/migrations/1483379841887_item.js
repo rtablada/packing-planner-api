@@ -18,8 +18,6 @@ class ItemSchema extends Schema {
         .default(false)
         .notNullable();
 
-      table.string('room')
-        .notNullable();
       table.timestamps();
     });
   }

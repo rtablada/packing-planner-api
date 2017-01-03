@@ -6,7 +6,7 @@ const attributes = ['name', 'ownBox', 'room'];
 class ItemController {
 
   * index(request, response) {
-    const items = yield Item.with('trip').fetch();
+    const items = yield Item.with('trip', 'room').fetch();
 
     response.jsonApi('Item', items);
   }
@@ -23,7 +23,7 @@ class ItemController {
 
   * show(request, response) {
     const id = request.param('id');
-    const item = yield Item.with('trip').where({ id }).firstOrFail();
+    const item = yield Item.with('trip', 'room').where({ id }).firstOrFail();
 
     response.jsonApi('Item', item);
   }
@@ -37,7 +37,7 @@ class ItemController {
       trip_id: request.jsonApi.getRelationId('trip'),
     };
 
-    const item = yield Item.with('trip').where({ id }).firstOrFail();
+    const item = yield Item.with('trip', 'room').where({ id }).firstOrFail();
     item.fill(Object.assign({}, input, foreignKeys));
     yield item.save();
 

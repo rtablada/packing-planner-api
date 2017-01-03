@@ -5,6 +5,13 @@ class Room extends JsonApiView {
     return ['name'];
   }
 
+  items() {
+    return this.hasMany('App/Http/JsonApiViews/Item', {
+      included: true,
+      excludeRelation: 'room',
+    });
+  }
+
 }
 
 module.exports = Room;
