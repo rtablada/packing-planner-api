@@ -9,6 +9,8 @@ class ItemSchema extends Schema {
       table.increments();
       table.integer('trip_id')
         .references('trips.id');
+      table.integer('room_id')
+        .references('rooms.id');
 
       table.string('name')
         .notNullable();
