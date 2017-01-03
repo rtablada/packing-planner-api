@@ -23,6 +23,9 @@ Route.resource('/api/trips', 'TripController')
 Route.resource('/api/items', 'ItemController')
   .except(['create', 'edit']);
 
+Route.resource('/api/rooms', 'RoomController')
+  .only(['index', 'show']);
+
 // Route.post('/api/users', 'UserController.store');
 //
 // Route.resource('/api/users', 'UserController')
