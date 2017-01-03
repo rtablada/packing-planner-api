@@ -20,7 +20,7 @@ const Route = use('Route');
 Route.resource('/api/trips', 'TripController')
   .except(['create', 'edit']);
 
-Route.resource('/api/items', 'TripController')
+Route.resource('/api/items', 'ItemController')
   .except(['create', 'edit']);
 
 // Route.post('/api/users', 'UserController.store');
